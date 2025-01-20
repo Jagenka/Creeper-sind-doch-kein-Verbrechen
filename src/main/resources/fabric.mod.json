@@ -1,0 +1,48 @@
+{
+	"schemaVersion": 1,
+	"id": "creeper-sind-doch-kein-verbrechen",
+	"version": "${version}",
+	"name": "Creeper sind doch kein Verbrechen",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/creeper-sind-doch-kein-verbrechen/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "de.jagenka.CreeperSindDochKeinVerbrechen",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "de.jagenka.CreeperSindDochKeinVerbrechenClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"creeper-sind-doch-kein-verbrechen.mixins.json",
+		{
+			"config": "creeper-sind-doch-kein-verbrechen.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
