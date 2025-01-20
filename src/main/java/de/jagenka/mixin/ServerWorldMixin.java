@@ -2,7 +2,6 @@ package de.jagenka.mixin;
 
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.GameRules;
-import net.minecraft.world.explosion.Explosion;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,20 +11,20 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class ServerWorldMixin
 {
     @Shadow
-    protected abstract Explosion.DestructionType getDestructionType(GameRules.Key<GameRules.BooleanRule> decayRule);
+    public abstract GameRules getGameRules();
 
-    @Redirect(method = "createExplosion", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;getDestructionType(Lnet/minecraft/world/GameRules$Key;)Lnet/minecraft/world/explosion/Explosion$DestructionType;"))
-    private Explosion.DestructionType preventCreeperGriefing(ServerWorld instance, GameRules.Key<GameRules.BooleanRule> decayRule)
+    @Redirect(method = "createExplosion", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/GameRules;getBoolean(Lnet/minecraft/world/GameRules$Key;)Z"))
+    private boolean preventCreeperGriefing(GameRules instance, GameRules.Key<GameRules.BooleanRule> rule)
     {
-        // if a mob is about to explode, override DestructionType with KEEP, so no blocks are destroyed.
-        if (decayRule == GameRules.MOB_EXPLOSION_DROP_DECAY)
+        // while creating an explosion, force DO_MOB_GRIEFING to false
+        if (rule == GameRules.DO_MOB_GRIEFING)
         {
-            return Explosion.DestructionType.KEEP;
+            return false;
         }
-        // if something else is about to explode, proceed with default code.
+        // should some other game rule be checked in this method, proceed with default return value
         else
         {
-            return getDestructionType(decayRule);
+            return getGameRules().getBoolean(rule);
         }
     }
 }
