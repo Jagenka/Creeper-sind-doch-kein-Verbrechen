@@ -3,13 +3,13 @@
 	"id": "creeper-sind-doch-kein-verbrechen",
 	"version": "${version}",
 	"name": "Creeper sind doch kein Verbrechen",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Replaces Creeper Explosions with Fireworks.",
 	"authors": [
-		"Me!"
+		"Jagenka"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/Jagenka",
+		"sources": "https://github.com/Jagenka/Creeper-sind-doch-kein-Verbrechen"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/creeper-sind-doch-kein-verbrechen/icon.png",
@@ -20,20 +20,10 @@
 				"value": "de.jagenka.CreeperSindDochKeinVerbrechen",
 				"adapter": "kotlin"
 			}
-		],
-		"client": [
-			{
-				"value": "de.jagenka.CreeperSindDochKeinVerbrechenClient",
-				"adapter": "kotlin"
-			}
 		]
 	},
 	"mixins": [
-		"creeper-sind-doch-kein-verbrechen.mixins.json",
-		{
-			"config": "creeper-sind-doch-kein-verbrechen.client.mixins.json",
-			"environment": "client"
-		}
+		"creeper-sind-doch-kein-verbrechen.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.10",
@@ -41,8 +31,5 @@
 		"java": ">=21",
 		"fabric-api": "*",
 		"fabric-language-kotlin": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
