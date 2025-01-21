@@ -5,11 +5,13 @@ import net.fabricmc.api.ModInitializer
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.component.type.FireworkExplosionComponent
 import net.minecraft.component.type.FireworksComponent
+import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.projectile.FireworkRocketEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.DyeColor
+import net.minecraft.world.event.GameEvent
 import org.slf4j.LoggerFactory
 
 object CreeperSindDochKeinVerbrechen : ModInitializer
@@ -52,6 +54,11 @@ object CreeperSindDochKeinVerbrechen : ModInitializer
 
         val fireworkRocket = FireworkRocketEntity(serverWorld, x, y + 3, z, fireworkItemStack)
         serverWorld.spawnEntity(fireworkRocket)
-        fireworkRocket.explodeAndRemove(serverWorld)
+
+        // fireworkRocket.explodeAndRemove(serverWorld) -- now replaced with the following:
+        serverWorld.sendEntityStatus(fireworkRocket, EntityStatuses.EXPLODE_FIREWORK_CLIENT)
+        fireworkRocket.emitGameEvent(GameEvent.EXPLODE, fireworkRocket.owner)
+        // no exploding to prevent damage
+        fireworkRocket.discard()
     }
 }

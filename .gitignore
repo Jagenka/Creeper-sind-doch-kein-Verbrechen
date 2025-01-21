@@ -38,3 +38,6 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+# custom excludes
+/src/main/java/de/jagenka/mixin/DebugMixin.java
