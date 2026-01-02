@@ -1,36 +1,36 @@
 {
-	"schemaVersion": 1,
-	"id": "creeper-sind-doch-kein-verbrechen",
-	"version": "${version}",
-	"name": "Creeper sind doch kein Verbrechen",
-	"description": "Replaces Creeper Explosions with Fireworks.",
-	"authors": [
-		"Jagenka"
-	],
-	"contact": {
-		"homepage": "https://github.com/Jagenka",
-		"sources": "https://github.com/Jagenka/Creeper-sind-doch-kein-Verbrechen"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/creeper-sind-doch-kein-verbrechen/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			{
-				"value": "de.jagenka.CreeperSindDochKeinVerbrechen",
-				"adapter": "kotlin"
-			}
-		]
-	},
-	"mixins": [
-		"creeper-sind-doch-kein-verbrechen.mixins.json"
-	],
-	"accessWidener": "creeper-sind-doch-kein-verbrechen.accesswidener",
-	"depends": {
-		"fabricloader": ">=0.18.4",
-		"minecraft": "~1.21.11",
-		"java": ">=21",
-		"fabric-api": "*",
-		"fabric-language-kotlin": "*"
-	}
+    "schemaVersion": 1,
+    "id": "creeper-sind-doch-kein-verbrechen",
+    "version": "${version}",
+    "name": "Creeper sind doch kein Verbrechen",
+    "description": "Replaces Creeper Explosions with Fireworks.",
+    "authors": [
+        "Jagenka"
+    ],
+    "contact": {
+        "homepage": "https://github.com/Jagenka",
+        "sources": "https://github.com/Jagenka/Creeper-sind-doch-kein-Verbrechen"
+    },
+    "license": "CC0-1.0",
+    "icon": "assets/creeper-sind-doch-kein-verbrechen/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            {
+                "value": "de.jagenka.CreeperSindDochKeinVerbrechen",
+                "adapter": "kotlin"
+            }
+        ]
+    },
+    "mixins": [
+        "creeper-sind-doch-kein-verbrechen.mixins.json"
+    ],
+    "accessWidener": "creeper-sind-doch-kein-verbrechen.accesswidener",
+    "depends": {
+        "fabricloader": ">=0.18.4",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": "*",
+        "fabric-language-kotlin": "*"
+    }
 }

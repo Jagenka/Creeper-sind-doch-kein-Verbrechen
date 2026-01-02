@@ -50,8 +50,10 @@ public abstract class ServerWorldMixin
             int i = explosionImpl.explode();
             ParticleEffect particleEffect = explosionImpl.isSmall() ? smallParticle : largeParticle;
 
-            for (ServerPlayerEntity serverPlayerEntity : this.players) {
-                if (serverPlayerEntity.squaredDistanceTo(vec3d) < 4096.0) {
+            for (ServerPlayerEntity serverPlayerEntity : this.players)
+            {
+                if (serverPlayerEntity.squaredDistanceTo(vec3d) < 4096.0)
+                {
                     Optional<Vec3d> optional = Optional.ofNullable((Vec3d) explosionImpl.getKnockbackByPlayer().get(serverPlayerEntity));
                     serverPlayerEntity.networkHandler.sendPacket(new ExplosionS2CPacket(vec3d, power, i, optional, particleEffect, soundEvent, blockParticles));
                 }
